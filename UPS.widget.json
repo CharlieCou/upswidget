@@ -1,0 +1,46 @@
+{
+    "template": "<style>\n\t.charge {font-size:1em;\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tright: 0;}\n\t\t\n\t.voltage {font-size:1em; \n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;}\n\n\t.normaltext {font-size:1em; \n\t\tposition: absolute;\n\t\tbottom: 0;\n\t\tleft: 0;}\n\n\t.switch-content {\n\t\tmargin: auto;\n\t\ttext-align: center;}\n</style>\n\n<div class=\"icon backdrop\" ng-class=\"{backdrop: backdrop, center: center, inline: inline}\" style=\"width: 40%; height: 40%; margin: auto\">\n    <img height=\"100%\" ng-class=\"{ colorize: colorize }\" class=\"icon-tile-backdrop ng-scope colorize\" ng-src=\"assets/icons/{{config.icon_iconset}}/{{config.icon}}.svg\" src=\"assets/icons/{{config.icon_iconset}}/{{config.icon}}.svg\"></img>\n\t</div>\n<button class=\"btn\" style=\"width: 100%; height: 100%; background: inherit; padding: 0; outline: none;\" ng-click=\"sendCmd(config.item_panelitem, config.string_panelname)\">\n\t\n\t<div class=\"switch-content\">\n\t\t<div class=\"value\" ng-class=\"{backdrop: backdrop, center: center, inline: inline}\">\t\n\t\t\t<label class=\"charge\"><i class=\"charge\">{{itemValue(config.item_charge)}}%</i></label>\n\t\t\t<label class=\"voltage\"><i class=\"voltage\">{{itemValue(config.item_voltage)}}V</i></label>\n\t\t\t<p>{{ngModel.name}}</p>\n\t\t\t<label class=\"normaltext\"  style=\"color: {{itemValue(config.item_status)=='online' ? 'GREEN' : 'RED'}}\"><i class=\"normaltext\">{{itemValue(config.item_lasttransfert) | date:'dd/MM HH:mm'}}</i></label>\n\t\t\t<div><span style=\"color: {{itemValue(config.item_status)=='online' ? 'GREEN' : 'RED'}}\">{{itemValue(config.item_status)}}</span></div>\n      \n\t\t</div>\n\t</div>\n</button>",
+    "name": "UPS widget",
+    "author": "Charlie",
+    "description": "A widget displaying info on a ups system",
+    "settings": [
+        {
+            "type": "item",
+            "id": "item_voltage",
+            "label": "Item battery voltage"
+        },
+        {
+            "type": "item",
+            "id": "item_charge",
+            "label": "Item battery charge"
+        },
+        {
+            "type": "item",
+            "id": "item_lasttransfert",
+            "label": "item last transfert"
+        },
+        {
+            "type": "string",
+            "id": "string_panelname",
+            "label": "Panel name",
+            "description": "panel name to switch to on button press",
+            "default": "Chauffage"
+        },
+        {
+            "type": "item",
+            "id": "item_panelitem",
+            "label": "item panel",
+            "description": "Item commanding the switch to another panel"
+        },
+        {
+            "type": "icon",
+            "id": "icon",
+            "description": "Backdrop icon"
+        },
+        {
+            "type": "item",
+            "id": "item_status",
+            "label": "Status"
+        }
+    ]
+}
